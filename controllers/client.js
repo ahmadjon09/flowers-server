@@ -1,3 +1,4 @@
+import Product from '../models/product.js'
 import Client from '../models/client.js'
 import bcrypt from 'bcrypt'
 import generateAvatar from '../middlewares/generateAvatar.js'
@@ -151,5 +152,50 @@ export const GetMe = async (req, res) => {
     return res.status(200).json({ data: foundClient })
   } catch (error) {
     res.status(500).json({ error: error.message })
+  }
+}
+
+export const toggleFavorite = async (req, res) => {
+  try {
+    const { clientId, productId } = req.body
+
+    const client = await Client.findById(clientId)
+    if (!client) return res.status(404).json({ message: 'Client not found' })
+
+    const product = await Product.findById(productId)
+    if (!product) return res.status(404).json({ message: 'Product not found' })
+
+    const index = client.favorites.indexOf(productId)
+    if (index === -1) {
+      client.favorites.push(productId)
+    } else {
+      client.favorites.splice(index, 1)
+    }
+
+    await client.save()
+    res.json({ message: 'Favorites updated', favorites: client.favorites })
+  } catch (error) {
+    res.status(500).json({ message: 'Server error ', error })
+  }
+}
+
+export const removeFavorite = async (req, res) => {
+  try {
+    const { clientId, productId } = req.body
+
+    const client = await Client.findById(clientId)
+    if (!client) return res.status(404).json({ message: 'Client not found' })
+
+    client.favorites = client.favorites.filter(
+      fav => fav.toString() !== productId
+    )
+
+    await client.save()
+    res.json({
+      message: 'Product removed from favorites',
+      favorites: client.favorites
+    })
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error })
   }
 }
