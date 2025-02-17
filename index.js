@@ -9,7 +9,7 @@ import path from 'path'
 import ClientRoutes from './routes/client.js'
 import AdminRoutes from './routes/admin.js'
 import ProductRoutes from './routes/product.js'
-import AboutRoutes from './routes/about.js'
+import CarouselRoutes from './routes/carousel.js'
 
 dotenv.config()
 
@@ -90,7 +90,7 @@ app.get('/', (_, res) => {
 app.use('/admin', AdminRoutes)
 app.use('/client', ClientRoutes)
 app.use('/product', ProductRoutes)
-app.use('/about', AboutRoutes)
+app.use('/carousel', CarouselRoutes)
 
 const startApp = async () => {
   try {
