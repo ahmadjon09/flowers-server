@@ -55,7 +55,7 @@ app.post('/upload', (req, res) => {
     }
 
     const uploadedImages = req.files.map(
-      file => `${req.protocol}://localhost:7777/uploads/${file.filename}`
+      file => `${req.protocol}://flowers-server-ohej.onrender.com/uploads/${file.filename}`
     )
     res.status(200).json({
       message: 'Images successfully uploaded!',
