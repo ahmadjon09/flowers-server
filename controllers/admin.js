@@ -12,11 +12,7 @@ export const GetAllAdmins = async (_, res) => {
     const admins = await Admin.find()
     return res.json({ data: admins })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Get all admins err:10'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: GAA10"')
   }
 }
 
@@ -29,11 +25,7 @@ export const GetOneAdmin = async (req, res) => {
     }
     return res.status(201).json({ data: admin })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Get one admin err:23'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: A23"')
   }
 }
 
@@ -64,11 +56,7 @@ export const CreateNewAdmin = async (req, res) => {
       data: newAdmin
     })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Create new admin err:40'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: A40"')
   }
 }
 
@@ -106,7 +94,7 @@ export const UpdateAdmin = async (req, res) => {
   } catch (error) {
     return res
       .status(500)
-      .json({ message: 'Internal server error. Update admin err:71' })
+      .json({ message: 'Internal server error. "err: A71"' })
   }
 }
 
@@ -138,11 +126,7 @@ export const AdminLogin = async (req, res) => {
       token
     })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Admin login err:113'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: A113"')
   }
 }
 
@@ -158,11 +142,7 @@ export const DeleteAdmin = async (req, res) => {
       .status(201)
       .json({ message: 'Admin has been deleted successfully.' })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Delete admin err:149'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: A149"')
   }
 }
 
@@ -173,10 +153,6 @@ export const GetMe = async (req, res) => {
       return res.status(404).json({ message: 'Admin not found!' })
     return res.status(200).json({ data: foundAdmin })
   } catch (error) {
-    return sendErrorResponse(
-      res,
-      500,
-      'Internal server error. Get me funk. err:169'
-    )
+    return sendErrorResponse(res, 500, 'Internal server error. "err: A169"')
   }
 }

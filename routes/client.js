@@ -5,6 +5,7 @@ import {
   DeleteClient,
   GetAllClients,
   GetMe,
+  GetOneClient,
   removeFavorite,
   toggleFavorite,
   UpdateClient
@@ -17,11 +18,10 @@ const router = express.Router()
 router.get('/', isExisted, IsAdmin, GetAllClients)
 router.get('/me', isExisted, GetMe)
 router.post('/register', ClientRegister)
+router.get('/:id', GetOneClient)
 router.post('/login', ClientLogin)
 router.put('/:id', isExisted, UpdateClient)
 router.delete('/:id', isExisted, DeleteClient)
-
-//Favorite
 
 router.post('/toggle-favorite', toggleFavorite)
 router.post('/remove-favorite', removeFavorite)

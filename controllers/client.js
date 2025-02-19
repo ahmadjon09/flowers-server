@@ -144,6 +144,22 @@ export const DeleteClient = async (req, res) => {
   }
 }
 
+export const GetOneClient = async (req, res) => {
+  const { id } = req.params
+  try {
+    const OneClient = await Client.findById(id)
+    if (!OneClient) {
+      return res.status(404).json({ message: 'Client not found.' })
+    }
+    return res.status(200).json({ data: OneClient })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Internal server error. Get one client err:147',
+      error: error.message
+    })
+  }
+}
+
 export const GetMe = async (req, res) => {
   try {
     const foundClient = await Client.findById(req.userInfo.userId)
@@ -168,14 +184,14 @@ export const toggleFavorite = async (req, res) => {
     const index = client.favorites.indexOf(productId)
     if (index === -1) {
       client.favorites.push(productId)
+      await client.save()
     } else {
-      client.favorites.splice(index, 1)
+      return res.status(409).json({ message: 'You already liked this product' })
     }
 
-    await client.save()
-    res.json({ message: 'Favorites updated', favorites: client.favorites })
+    return res.json({ message: 'Favorites updated' })
   } catch (error) {
-    res.status(500).json({ message: 'Server error ', error })
+    return res.status(500).json({ message: 'Server error ', error })
   }
 }
 
