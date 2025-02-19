@@ -9,6 +9,7 @@ import ClientRoutes from './routes/client.js'
 import AdminRoutes from './routes/admin.js'
 import ProductRoutes from './routes/product.js'
 import CarouselRoutes from './routes/carousel.js'
+import TeamRouters from './routes/team.js'
 
 dotenv.config()
 
@@ -28,6 +29,7 @@ app.use('/admin', AdminRoutes)
 app.use('/client', ClientRoutes)
 app.use('/product', ProductRoutes)
 app.use('/carousel', CarouselRoutes)
+app.use('/teams', TeamRouters)
 
 const startApp = async () => {
   try {
