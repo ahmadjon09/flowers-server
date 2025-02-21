@@ -45,3 +45,17 @@ export default function (req, res) {
     })
   })
 }
+
+export function deleteImage (req, res) {
+  const { filename } = req.params
+  const filePath = path.join('uploads', filename)
+
+  fs.unlink(filePath, err => {
+    if (err) {
+      return res
+        .status(400)
+        .json({ message: 'File not found or could not be deleted.' })
+    }
+    res.status(200).json({ message: 'Image successfully deleted!' })
+  })
+}

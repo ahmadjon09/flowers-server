@@ -20,9 +20,10 @@ app.use(express.json())
 
 app.use('/uploads', express.static('uploads'))
 app.post('/upload', (req, res) => uploadFile(req, res))
+app.delete('/upload/:filename', deleteImage)
 
 app.get('/', (_, res) => {
-  res.send(`Hello world`)
+  res.send(`Hello world.`)
 })
 
 app.use('/admin', AdminRoutes)
