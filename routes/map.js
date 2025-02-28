@@ -3,8 +3,8 @@ import { addMap, getMaps, deleteMap } from '../controllers/map.js'
 
 const router = express.Router()
 
-router.post('/maps', addMap)
+router.post('/', addMap)
 router.get('/', getMaps)
-router.delete('/maps/:id', deleteMap)
+router.delete('/:id', deleteMap)
 
 export default router
