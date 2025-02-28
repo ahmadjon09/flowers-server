@@ -48,11 +48,11 @@ export const GetAllTeams = async (_, res) => {
 export const GetOneTeam = async (req, res) => {
   const { id } = req.params
   try {
-    const Team = await Team.findById(id)
+    const OneTeam = await Team.findById(id)
     if (!Team) {
       return sendErrorResponse(res, 404, 'Team not found.')
     }
-    return res.status(200).json({ Team })
+    return res.status(200).json({ OneTeam })
   } catch (error) {
     return sendErrorResponse(res, 500, 'Internal server error.')
   }
