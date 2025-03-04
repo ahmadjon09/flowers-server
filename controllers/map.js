@@ -2,9 +2,15 @@ import Map from '../models/map.js'
 
 export const addMap = async (req, res) => {
   try {
-    const { name, mapsName, coordinates } = req.body
+    const { name, mapsName, coordinates, mapsPhone, mapsTime } = req.body
 
-    if (!name || !mapsName || !coordinates || coordinates.length === 0) {
+    if (
+      !name ||
+      !mapsName ||
+      !coordinates ||
+      !mapsPhone ||
+      coordinates.length === 0
+    ) {
       return res
         .status(400)
         .json({ message: 'Please fill in all required fields!' })
@@ -12,6 +18,8 @@ export const addMap = async (req, res) => {
 
     const newMap = new Map({
       name,
+      mapsPhone,
+      mapsTime,
       mapsName,
       coordinates
     })
