@@ -162,7 +162,9 @@ export const GetOneClient = async (req, res) => {
 
 export const GetMe = async (req, res) => {
   try {
-    const foundClient = await Client.findById(req.userInfo.userId).populate("favorites")
+    const foundClient = await Client.findById(req.userInfo.userId).populate(
+      'favorites'
+    )
     if (!foundClient)
       return res.status(404).json({ message: 'Client not found!' })
     return res.status(200).json({ data: foundClient })
@@ -189,7 +191,7 @@ export const toggleFavorite = async (req, res) => {
       return res.status(409).json({ message: 'You already liked this product' })
     }
 
-    return res.json({ message: 'Favorites updated' })
+    return res.json({ message: 'Favorites updated', id: productId })
   } catch (error) {
     return res.status(500).json({ message: 'Server error ', error })
   }
