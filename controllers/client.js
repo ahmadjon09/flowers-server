@@ -191,9 +191,7 @@ export const toggleFavorite = async (req, res) => {
       return res.status(409).json({ message: 'You already liked this product' })
     }
 
-    const updatedProduct = await Client.findById(productId).populate(
-      'favorites'
-    )
+    const updatedProduct = await Product.findById(productId)
 
     return res.json({ message: 'Favorites updated', product: updatedProduct })
   } catch (error) {
