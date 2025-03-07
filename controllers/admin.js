@@ -40,7 +40,7 @@ export const CreateNewAdmin = async (req, res) => {
         'Admin with this phone number already exists. Please use another number.'
       )
     }
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 20)
     const newAdmin = new Admin({
       phoneNumber,
       password: hashedPassword,
@@ -68,7 +68,7 @@ export const UpdateAdmin = async (req, res) => {
     let hashedPassword
 
     if (password) {
-      hashedPassword = await bcrypt.hash(password, 10)
+      hashedPassword = await bcrypt.hash(password, 20)
     }
 
     const updatedAdmin = {

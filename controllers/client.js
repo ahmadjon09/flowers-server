@@ -22,7 +22,7 @@ export const ClientRegister = async (req, res) => {
       )
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 20)
     const avatarPhoto = avatar ? avatar : generateAvatar(firstName)
     const newClient = new Client({
       phoneNumber,
@@ -99,7 +99,7 @@ export const UpdateClient = async (req, res) => {
   const userId = req.params.id
   const { phoneNumber, firstName, lastName, avatar, password } = req.body
   try {
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 20)
     const avatarPhoto = avatar ? avatar : generateAvatar(firstName)
     const updatedClient = {
       phoneNumber,
