@@ -11,6 +11,7 @@ import ProductRoutes from './routes/product.js'
 import CarouselRoutes from './routes/carousel.js'
 import TeamRouters from './routes/team.js'
 import MapRouters from './routes/map.js'
+import PostRouters from './routes/post.js'
 
 dotenv.config()
 
@@ -32,6 +33,7 @@ app.use('/product', ProductRoutes)
 app.use('/carousel', CarouselRoutes)
 app.use('/teams', TeamRouters)
 app.use('/map', MapRouters)
+app.use('/post', PostRouters)
 
 const startApp = async () => {
   try {

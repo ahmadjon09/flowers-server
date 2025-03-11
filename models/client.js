@@ -6,7 +6,9 @@ const ClientSchema = new mongoose.Schema({
   lastName: { type: String, required: true },
   password: { type: String, required: true },
   avatar: [{ type: String }],
-  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }]
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
+  liked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  disliked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 })
 
 export default mongoose.model('Client', ClientSchema)
