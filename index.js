@@ -35,6 +35,16 @@ app.use('/teams', TeamRouters)
 app.use('/map', MapRouters)
 app.use('/post', PostRouters)
 
+const keepServerAlive = () => {
+  setInterval(() => {
+    axios
+      .get('https://flowers-server-ohej.onrender.com')
+      .then(() => console.log('🔄 Server active'))
+      .catch(() => console.log('⚠️ Ping failed'))
+  }, 5 * 60 * 1000)
+}
+
+keepServerAlive()
 const startApp = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI)
