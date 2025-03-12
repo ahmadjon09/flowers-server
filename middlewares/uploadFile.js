@@ -40,7 +40,7 @@ export default function (req, res) {
       file => `${req.protocol}://${req.get('host')}/uploads/${file.filename}`
     )
     res.status(200).json({
-      message: 'Images successfully uploaded!',
+      message: 'Image successfully uploaded!',
       images: uploadedImages
     })
   })
