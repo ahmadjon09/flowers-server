@@ -46,6 +46,7 @@ const keepServerAlive = () => {
 }
 
 keepServerAlive()
+
 const startApp = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI)
