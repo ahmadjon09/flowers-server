@@ -42,7 +42,7 @@ const keepServerAlive = () => {
       .get('https://flowers-server-ohej.onrender.com')
       .then(() => console.log('🔄 Server active'))
       .catch(() => console.log('⚠️ Ping failed'))
-  }, 5 * 60 * 1000)
+  }, 10 * 60 * 1000)
 }
 
 keepServerAlive()
